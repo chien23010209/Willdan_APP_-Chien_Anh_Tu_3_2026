@@ -53,16 +53,4 @@
 
 ---
 
-## 📁 Cấu trúc thư mục dự án (Dự kiến)
 
-```text
-willdan-app/
-├── assets/             # Chứa hình ảnh minh họa, icon, font chữ offline
-├── lib/                # Chứa mã nguồn chính của ứng dụng
-│   ├── core/           # Chứa các file màu sắc, theme, hằng số hệ thống
-│   ├── data/           # Chứa model dữ liệu, logic gọi database
-│   ├── screens/        # Chứa các màn hình (Home, Guide, Tools, FirstAid)
-│   ├── widgets/        # Chứa các thành phần UI dùng chung (nút bấm, menu)
-│   └── main.dart       # File khởi chạy ứng dụng
-├── pubspec.yaml        # File khai báo thư viện và plugin
-└── README.md           # File tài liệu dự án
