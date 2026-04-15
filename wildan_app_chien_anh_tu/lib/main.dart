@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Sinh Tồn Cúc Phương',
-      debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      home: const CucPhuongSurvivalPage(title: 'Ứng Dụng Sinh Tồn'),
+      home: const CucPhuongSurvivalPage(title: 'Hành Trình Rừng Cúc Phương'),
     );
   }
 }
@@ -36,8 +36,10 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
   
   String forestName = "Vườn Quốc gia Cúc Phương";
   double temperature = 26.5;
+
   int teamHealthPoints = 100;
   bool isRaining = false;
+
   int daysSurvived = 2;
   String targetLocation = "Cây Chò Ngàn Năm";
 
@@ -45,18 +47,24 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
   // YÊU CẦU 2: THỰC HIỆN SỬ DỤNG COLLECTIONS (Array, List, Map)
   // ========================================================================
   
-  // List tên thành viên
   final List<String> teamMembers = <String>['Chiến', 'Tú', 'Đức Anh'];
-
-  // List hành trang
   final List<String> inventory = <String>['Thuốc chống vắt', 'Đèn pin', 'Áo mưa', 'Bản đồ', 'Lều trại'];
   
-  // Map thể lực
   final Map<String, int> staminaMap = {
     'Chiến': 95,
     'Tú': 88,
     'Đức Anh': 90,
   };
+
+  // ========================================================================
+  // YÊU CẦU 4: TẠO VÀ HIỂN THỊ LIST TƯƠNG ỨNG ĐỐI TƯỢNG (Forest có id, name)
+  // ========================================================================
+  
+  final List<Map<String, dynamic>> listForest = [
+    {'id': 1, 'name': 'Rừng Cúc Phương'}, 
+    {'id': 2, 'name': 'Rừng Quốc Gia Ba Vì'}, 
+    {'id': 3, 'name': 'Rừng U Minh'}
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +82,7 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             
-            // --- 1. HIỂN THỊ CÁC BIẾN ---
+            // --- 1. HIỂN THỊ CÁC BIẾN (YÊU CẦU 1) ---
             const Text('🌲 THÔNG TIN HÀNH TRÌNH', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.green)),
             Card(
               elevation: 2,
@@ -95,7 +103,7 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
 
             const SizedBox(height: 24),
 
-            // --- 2. HIỂN THỊ LIST BẰNG DẠNG ROW ---
+            // --- 2. HIỂN THỊ LIST BẰNG DẠNG ROW (YÊU CẦU 2 & 3) ---
             const Text('🧑 NHÓM SINH TỒN', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.blue)),
             Card(
               elevation: 2,
@@ -103,11 +111,11 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal, 
+                  scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
                       const Icon(Icons.group, color: Colors.blue),
-                      const SizedBox(width: 8), // Đã sửa lỗi emoji
+                      const SizedBox(width: 8),
                       for (var member in teamMembers) 
                         Padding(
                           padding: const EdgeInsets.only(right: 8.0),
@@ -125,8 +133,8 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
 
             const SizedBox(height: 24),
 
-            // --- 3. HIỂN THỊ MAP BẰNG DẠNG ROW ---
-            const Text('🔋 THỂ LỰC THÀNH VIÊN', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.orange)),
+            // --- 3. HIỂN THỊ MAP BẰNG DẠNG ROW (YÊU CẦU 2 & 3) ---
+            const Text('🔋 THỂ LỰC', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.orange)),
             Card(
               elevation: 2,
               color: Colors.orange.shade50,
@@ -154,29 +162,32 @@ class _CucPhuongSurvivalPageState extends State<CucPhuongSurvivalPage> {
 
             const SizedBox(height: 24),
 
-            // --- 4. HÀNH TRANG ---
-            const Text('🎒 HÀNH TRANG', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.teal)),
+            // --- 4. HIỂN THỊ LIST ĐỐI TƯỢNG (YÊU CẦU 4) ---
+            const Text('🗺️ DANH SÁCH RỪNG ', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.purple)),
             Card(
               elevation: 2,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Wrap(
-                  spacing: 8.0,
-                  runSpacing: 8.0,
+              child: Column(
+                // Sử dụng hàm .map() để duyệt qua List Map và hiển thị thành các dòng ListTile
+                children: listForest.map((forest) => Column(
                   children: [
-                    ...inventory.map((item) => Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8), 
-                      decoration: BoxDecoration(
-                        color: Colors.teal.shade50,
-                        borderRadius: BorderRadius.circular(8), 
-                        border: Border.all(color: Colors.teal.shade200)
+                    ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.purple.shade100,
+                        child: Text('${forest['id']}', style: const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold)),
                       ),
-                      child: Text(item),
-                    ))
+                      title: Text('${forest['name']}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                      trailing: const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+                      onTap: () {
+                        // Tính năng mở rộng: Bấm vào dòng này có thể làm gì đó sau này
+                      },
+                    ),
+                    // Ngăn cách giữa các rừng bằng đường kẻ, ngoại trừ rừng cuối cùng
+                    if (forest != listForest.last) const Divider(height: 1, indent: 16, endIndent: 16),
                   ],
-                ),
+                )).toList(),
               ),
             ),
+
           ],
         ),
       ),
