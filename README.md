@@ -22,14 +22,7 @@
 * **Content & Chức năng:** Chuẩn hóa dữ liệu theo mô hình OOP (Chia 4 Model riêng biệt).
 * **Mockup:** Mã nguồn hiện tại được thực thi bám sát 100% với bản vẽ "Mockup screen" do nhóm thiết kế trước đó.
 
-**4. Danh mục nộp bài của sinh viên:**
-* [x] **1. Github repo của nhóm:** *(Chèn link repo github vào đây)*
-* [x] **2. Ảnh chụp màn hình chương trình chạy:** *(Lưu trong thư mục `/images` trên Github)*
-* [x] **3. Code chính phần Layout:** Nằm tại file `lib/main_layout.dart`
-* [x] **4. Code chính của Navigation bar:** Tích hợp bên trong `lib/main_layout.dart`
-* [x] **5. Link ReadMe.md:** *(Chính là file này)*
 
----
 
 ## 👥 Đội ngũ Phát triển (Willdan Team)
 
