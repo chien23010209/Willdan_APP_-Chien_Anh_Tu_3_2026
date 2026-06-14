@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461635699261",
+    "project_id": "wildan-app",
+    "storage_bucket": "wildan-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461635699261:android:d8dabe2e475770e8d4a054",
+        "android_client_info": {
+          "package_name": "com.example.wildan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk8nMqftiEb5WKEO4Ku1QB54rUsTHvnuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,42 @@
+name: wildan
+description: "Wildan - Ứng dụng hướng dẫn sinh tồn offline cho rừng Việt Nam (Vườn Quốc gia Cúc Phương)."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Firebase
+  firebase_core: ^2.32.0
+  cloud_firestore: ^4.15.8
+  firebase_auth: ^4.17.8
+
+  # State management
+  provider: ^6.1.2
+
+  # Local storage / offline
+  shared_preferences: ^2.2.2
+
+  # Device sensors & features
+  flutter_compass: ^0.8.0          # La bàn số (cảm biến từ trường)
+  geolocator: ^11.0.0              # GPS toạ độ
+  torch_light: ^1.1.0              # Đèn pin / Flash SOS Morse
+  url_launcher: ^6.2.5             # Gọi số khẩn cấp 115/113/114
+  intl: ^0.19.0                    # Định dạng thời gian
+
+  # Bản đồ
+  flutter_map: ^6.2.1              # Bản đồ tương tác (OpenStreetMap)
+  latlong2: ^0.9.1                 # Toạ độ lat/lng cho bản đồ
+
+dev_dependencies:
+  flutter_lints: ^3.0.1
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
